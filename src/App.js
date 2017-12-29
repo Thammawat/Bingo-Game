@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid, Row, Col } from 'react-bootstrap'
 import logo from './logo.svg';
 import './App.css';
 
@@ -17,7 +18,7 @@ const database = firebase.database()
 
 
 class App extends Component {
-  getFirebase = ( key ) => {
+  getFirebase = (key) => {
     const listItem = []
     const firebaseRef = database.ref(key)
     firebaseRef.on('value', (snap) => {
@@ -32,8 +33,25 @@ class App extends Component {
     const dataFirebase = this.getFirebase('address')
     console.log(dataFirebase)
     return (
-      <div className = "bingo-box">
-        <h1>bingo</h1>
+      <div>
+        <Grid>
+          <Row>
+            <Col xs={10} xsOffset={2}>
+              <Row>
+                <Col xs={2}>
+                  <div className="bingo-box">
+                    <p>15</p>
+                  </div>
+                </Col>
+                <Col xs={2}>
+                  <div className="bingo-box-blank">
+                  <p>9</p>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
